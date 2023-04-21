@@ -1,1 +1,75 @@
-uh
+<!DOCTYPE html>
+<html>
+<head>
+	<title>every teenager needs to hear this! ☝️😲</title>
+	<style>
+		body {
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+		}
+		img {
+			position: absolute;
+			width: 200px;
+			height: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div style="position:absolute;top:0;left:0;background-color:black;color:white;padding:5px;font-size:16px;font-family:verdana;">
+		ALLOW YOUR BROWSER TO AUTOPLAY UNMUTED FOR THIS SITE TO WORK!
+	</div>
+	<img id="bluddancing" src="gifs/bluddancing.gif">
+	<img id="bludwalking" src="gifs/bludwalking.gif">
+	<img id="bludrunning" src="gifs/bludrunning.gif">
+	<img id="subscribe" src="gifs/subscribe.gif">
+
+	<video id="bgvid" autoplay loop></video>
+
+	<audio id="subaudio" src="audios/subaudio.mp3"></audio>
+	<audio id="ringtone" src="audios/ringtone.mp3"></audio>
+	<audio id="hewasrunningfromacopcar" src="audios/hewasrunningfromacopcar.mp3"></audio>
+
+	<script>
+		const gifs = document.querySelectorAll("img");
+		const bgvid = document.getElementById("bgvid");
+		const audios = document.querySelectorAll("audio");
+
+		function randomPosition(element) {
+			const x = Math.floor(Math.random() * (window.innerWidth - element.width));
+			const y = Math.floor(Math.random() * (window.innerHeight - element.height));
+			element.style.left = x + "px";
+			element.style.top = y + "px";
+		}
+
+		function moveGIFs() {
+			gifs.forEach(gif => randomPosition(gif));
+		}
+
+		setInterval(moveGIFs, 1000);
+		setInterval(() => {
+			const audio = audios[Math.floor(Math.random() * audios.length)];
+			audio.play();
+		}, 1000);
+
+		document.addEventListener("keydown", event => {
+			if (event.key === "b") {
+				document.body.classList.toggle("bling");
+			}
+		});
+
+		window.addEventListener("DOMContentLoaded", () => {
+			randomPosition(document.getElementById("bluddancing"));
+			randomPosition(document.getElementById("bludwalking"));
+			randomPosition(document.getElementById("bludrunning"));
+			randomPosition(document.getElementById("subscribe"));
+			const sources = ["videos/spongebobmemphis.webm", "videos/hewasrunningfromacopcar.webm", "videos/seetheshoes.webm"];
+			bgvid.src = sources[Math.floor(Math.random() * sources.length)];
+		});
+
+		bgvid.style.width = "100%";
+		bgvid.style.height = "100%";
+	</script>
+</body>
+</html>
+
