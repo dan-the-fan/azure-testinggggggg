@@ -32,7 +32,7 @@
     <audio id="nonono" src="audios/nonono.mp3">
     <audio id="ringtone2" src="audios/ringtone2.mp3">
     <audio id="franklin" src="audios/franklin.mp3">
-
+    <a id="credits" href="credits.html">Credits</a>
 	<script>
         if (navigator.userAgent.indexOf("Firefox") === -1) {
 			if (localStorage.getItem("useFirefox") !== "true") {
@@ -44,6 +44,15 @@
 				}
 			}
 		}
+        const credits = document.createElement('a');
+        credits.innerText = 'Credits';
+        credits.href = 'credits.html';
+        credits.target = '_blank';
+        credits.style.position = 'fixed';
+        credits.style.right = '10px';
+        credits.style.bottom = '10px';
+        credits.style.zIndex = '9999';
+        document.body.appendChild(credits);
 		const gifs = document.querySelectorAll("img");
 		const bgvid = document.getElementById("bgvid");
 		const audios = document.querySelectorAll("audio");
@@ -81,7 +90,5 @@
 		    document.querySelector('div').style.opacity = 0;
 	    }, 5000);
 	</script>
-	<a href="credits.html" target="_blank" style="position: fixed; bottom: 10px; right: 10px; color: white; font-size: 16px;">Credits</a>
 </body>
 </html>
-
