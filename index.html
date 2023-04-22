@@ -19,7 +19,7 @@
 	<div style="position:absolute;top:0;left:0;background-color:black;color:white;padding:5px;font-size:16px;font-family:verdana;">
 		ALLOW YOUR BROWSER TO AUTOPLAY UNMUTED FOR THIS SITE TO WORK!
 	</div>
-	<img id="bluddancing" src="gifs/bluddancing.gif">
+	<img id="subscribe2" src="gifs/subscribe2.gif">
 	<img id="bludwalking" src="gifs/bludwalking.gif">
 	<img id="bludrunning" src="gifs/bludrunning.gif">
 	<img id="subscribe" src="gifs/subscribe.gif">
@@ -29,8 +29,21 @@
 	<audio id="subaudio" src="audios/subaudio.mp3"></audio>
 	<audio id="ringtone" src="audios/ringtone.mp3"></audio>
 	<audio id="hewasrunningfromacopcar" src="audios/hewasrunningfromacopcar.mp3"></audio>
+    <audio id="nonono" src="audios/nonono.mp3">
+    <audio id="ringtone2" src="audios/ringtone2.mp3">
+    <audio id="franklin" src="audios/franklin.mp3">
 
 	<script>
+        if (navigator.userAgent.indexOf("Firefox") === -1) {
+			if (localStorage.getItem("useFirefox") !== "true") {
+				if (confirm("Please use Firefox.")) {
+					localStorage.setItem("useFirefox", "true");
+					location.reload();
+				} else {
+					throw new Error("Please use Firefox.");
+				}
+			}
+		}
 		const gifs = document.querySelectorAll("img");
 		const bgvid = document.getElementById("bgvid");
 		const audios = document.querySelectorAll("audio");
@@ -52,23 +65,21 @@
 			audio.play();
 		}, 1000);
 
-		document.addEventListener("keydown", event => {
-			if (event.key === "b") {
-				document.body.classList.toggle("bling");
-			}
-		});
-
 		window.addEventListener("DOMContentLoaded", () => {
-			randomPosition(document.getElementById("bluddancing"));
+			randomPosition(document.getElementById("subscribe2"));
 			randomPosition(document.getElementById("bludwalking"));
 			randomPosition(document.getElementById("bludrunning"));
 			randomPosition(document.getElementById("subscribe"));
-			const sources = ["videos/spongebobmemphis.webm", "videos/hewasrunningfromacopcar.webm", "videos/seetheshoes.webm"];
+			const sources = ["videos/spongebobmemphis.webm", "videos/hewasrunningfromacopcar.webm", "videos/seetheshoes.webm", "videos/bayboy.webm"];
 			bgvid.src = sources[Math.floor(Math.random() * sources.length)];
 		});
 
 		bgvid.style.width = "100%";
 		bgvid.style.height = "100%";
+        // allow autoplay unmuted (nerd emoji)
+	    setTimeout(() => {
+		    document.querySelector('div').style.opacity = 0;
+	    }, 5000);
 	</script>
 </body>
 </html>
